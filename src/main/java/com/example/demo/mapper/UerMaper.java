@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UerMaper {
     public  List<User> selectAll();
+    public  int addUser(User user);
 }

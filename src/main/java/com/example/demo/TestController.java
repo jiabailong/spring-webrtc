@@ -34,4 +34,12 @@ public class TestController {
         JsonArray jsonArray = element.getAsJsonArray();
         return jsonArray.toString();
     }
+    @GetMapping("user")
+    public  int adduser(){
+        User user=new User();
+        user.setName("oppo");
+        user.setPhone("123456789");
+        userMappper.addUser(user);
+        return 1;
+    }
 }

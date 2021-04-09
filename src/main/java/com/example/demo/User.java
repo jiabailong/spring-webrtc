@@ -23,4 +23,13 @@ public class User implements Serializable {
 
     private String name;
     private String phone;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

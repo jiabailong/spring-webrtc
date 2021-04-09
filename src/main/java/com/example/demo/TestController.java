@@ -8,6 +8,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -41,5 +42,18 @@ public class TestController {
         user.setPhone("123456789");
         userMappper.addUser(user);
         return 1;
+    }
+    @GetMapping("login")
+    public  String login(@RequestParam String name,@RequestParam String pwd){
+        System.out.println(name+"==="+pwd);
+
+        User user=new User();
+        user.setName(name);
+        user.setPhone(pwd);
+        List<User>list=userMappper.selectUser(user);
+        if(list==null||list.size()==0){
+            return"no user";
+        }
+        return list.get(0).toString();
     }
 }

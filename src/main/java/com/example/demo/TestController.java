@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.example.demo.mapper.UerMaper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -54,6 +56,7 @@ public class TestController {
         if(list==null||list.size()==0){
             return"no user";
         }
-        return list.get(0).toString();
+        String token=JWT.create().withAudience(user.getName()).sign(Algorithm.HMAC256(user.getPhone()));
+        return token;
     }
 }
